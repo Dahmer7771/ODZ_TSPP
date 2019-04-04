@@ -14,3 +14,5 @@ C:\Users\User\source\repos\WindowsFormsApp7\WindowsFormsApp7\obj\x86\Release\Win
 C:\Users\User\source\repos\WindowsFormsApp7\WindowsFormsApp7\obj\x86\Release\WindowsFormsApp7.csproj.CopyComplete
 C:\Users\User\source\repos\WindowsFormsApp7\WindowsFormsApp7\obj\x86\Release\WindowsFormsApp7.exe
 C:\Users\User\source\repos\WindowsFormsApp7\WindowsFormsApp7\obj\x86\Release\WindowsFormsApp7.pdb
+C:\Users\User\source\repos\WindowsFormsApp7\WindowsFormsApp7\obj\x86\Release\WindowsFormsApp7.csprojAssemblyReference.cache
+C:\Users\User\source\repos\WindowsFormsApp7\WindowsFormsApp7\obj\x86\Release\WindowsFormsApp7.Connection.resources

@@ -15,8 +15,20 @@ namespace WindowsFormsApp7
 {
     public partial class Form1 : Form
     {
-        public string connectionString = "server=localhost;port=3306;username=root;password=;";
+        public string connectionString = ";;;";
         public MySqlConnection connection;
+
+        public void ShowConnectionParams()
+        {
+            connection = new MySqlConnection(connectionString);
+            string[] connectionParams = connectionString.Split(';');
+            connectionParams[0] = connectionParams[0].Replace("=", " = ");
+            connectionParams[1] = connectionParams[1].Replace("=", " = ");
+            connectionParams[2] = connectionParams[2].Replace("=", " = ");
+            label4.Text = $"{connectionParams[0]}";
+            label5.Text = $"{connectionParams[1]}";
+            label6.Text = $"{connectionParams[2]}";
+        }
 
         public void readFromTable(MySqlDataAdapter adapter)
         {
@@ -32,7 +44,14 @@ namespace WindowsFormsApp7
         public Form1()
         {
             InitializeComponent();
-            connection = new MySqlConnection(connectionString);
+            try
+            {
+                ShowConnectionParams();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -43,27 +62,27 @@ namespace WindowsFormsApp7
             dateTimePicker1.Format = DateTimePickerFormat.Custom;
             dateTimePicker1.CustomFormat = "HH:mm:ss";
 
-            try
-            {
-                MySqlDataAdapter adapter = new MySqlDataAdapter("select * from Flying.Flights", connection);
-                readFromTable(adapter);
+            //try
+            //{
+            //    MySqlDataAdapter adapter = new MySqlDataAdapter("select id_plane `Номер рейса`, time_start `Время вылета`, time_end `Время прибытия`, free_count_econom `Билеты эконом класса`, free_count_business `Билеты бизнесс класса`, punkt_B `Место назначение` from Flying.Flights", connection);
+            //    readFromTable(adapter);
 
-                connection.Open();
+            //    connection.Open();
 
-                MySqlCommand command = new MySqlCommand("select punkt_B from Flying.Flights", connection);
-                MySqlDataReader reader = command.ExecuteReader();
+            //    MySqlCommand command = new MySqlCommand("select punkt_B from Flying.Flights", connection);
+            //    MySqlDataReader reader = command.ExecuteReader();
 
-                while (reader.Read())
-                {
-                    comboBox2.Items.Add(reader[0].ToString());
-                }
+            //    while (reader.Read())
+            //    {
+            //        comboBox2.Items.Add(reader[0].ToString());
+            //    }
 
-                connection.Close();
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            //    connection.Close();
+            //}
+            //catch(Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message);
+            //}
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -90,7 +109,7 @@ namespace WindowsFormsApp7
             {
                 try
                 {
-                    MySqlDataAdapter adapter = new MySqlDataAdapter($"select * from Flying.Flights where punkt_B = '{punkt_B}' and time_start = '{time_start}'", connection);
+                    MySqlDataAdapter adapter = new MySqlDataAdapter($"select id_plane `Номер рейса`, time_start `Время вылета`, time_end `Время прибытия`, free_count_econom `Билеты эконом класса`, free_count_business `Билеты бизнесс класса`, punkt_B `Место назначение` from Flying.Flights where punkt_B = '{punkt_B}' and time_start = '{time_start}'", connection);
                     readFromTable(adapter);
                 }
                 catch (Exception ex)
@@ -149,23 +168,36 @@ namespace WindowsFormsApp7
             this.Hide();
         }
 
+        public void Clear(DataGridView dataGridView)
+        {
+            while (dataGridView.Rows.Count > 1)
+                for (int i = 0; i < dataGridView.Rows.Count - 1; i++)
+                    dataGridView.Rows.Remove(dataGridView.Rows[i]);
+        }
+
         private void Form1_VisibleChanged(object sender, EventArgs e)
         {
-            MySqlDataAdapter adapter = new MySqlDataAdapter("select id_plane `Номер рейса`, time_start `Время вылета`, time_end `Время прибытия`, free_count_econom `Билеты эконом класса`, free_count_business `Билеты бизнесс класса`, punkt_B `Место назначение` from Flying.Flights", connection);
-            readFromTable(adapter);
+  
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(connectionString);
-            MySqlDataAdapter adapter = new MySqlDataAdapter("select id_plane `Номер рейса`, time_start `Время вылета`, time_end `Время прибытия`, free_count_econom `Билеты эконом класса`, free_count_business `Билеты бизнесс класса`, punkt_B `Место назначение` from Flying.Flights", connection);
-            readFromTable(adapter);
+            try
+            {
+                MySqlDataAdapter adapter = new MySqlDataAdapter("select id_plane `Номер рейса`, time_start `Время вылета`, time_end `Время прибытия`, free_count_econom `Билеты эконом класса`, free_count_business `Билеты бизнесс класса`, punkt_B `Место назначение` from Flying.Flights", connection);
+                readFromTable(adapter);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void подключениеToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Connection connection = new Connection(this);
             connection.Show();
+            this.Hide();
         }
     }
 }
