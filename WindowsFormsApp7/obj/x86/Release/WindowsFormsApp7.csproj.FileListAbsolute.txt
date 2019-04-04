@@ -1,0 +1,16 @@
+C:\Users\User\source\repos\WindowsFormsApp7\WindowsFormsApp7\bin\x86\Release\WindowsFormsApp7.exe.config
+C:\Users\User\source\repos\WindowsFormsApp7\WindowsFormsApp7\bin\x86\Release\WindowsFormsApp7.exe
+C:\Users\User\source\repos\WindowsFormsApp7\WindowsFormsApp7\bin\x86\Release\WindowsFormsApp7.pdb
+C:\Users\User\source\repos\WindowsFormsApp7\WindowsFormsApp7\bin\x86\Release\Google.Protobuf.dll
+C:\Users\User\source\repos\WindowsFormsApp7\WindowsFormsApp7\bin\x86\Release\MySql.Data.dll
+C:\Users\User\source\repos\WindowsFormsApp7\WindowsFormsApp7\bin\x86\Release\Google.Protobuf.xml
+C:\Users\User\source\repos\WindowsFormsApp7\WindowsFormsApp7\bin\x86\Release\MySql.Data.xml
+C:\Users\User\source\repos\WindowsFormsApp7\WindowsFormsApp7\obj\x86\Release\WindowsFormsApp7.AboutUs.resources
+C:\Users\User\source\repos\WindowsFormsApp7\WindowsFormsApp7\obj\x86\Release\WindowsFormsApp7.Administration.resources
+C:\Users\User\source\repos\WindowsFormsApp7\WindowsFormsApp7\obj\x86\Release\WindowsFormsApp7.Form1.resources
+C:\Users\User\source\repos\WindowsFormsApp7\WindowsFormsApp7\obj\x86\Release\WindowsFormsApp7.Properties.Resources.resources
+C:\Users\User\source\repos\WindowsFormsApp7\WindowsFormsApp7\obj\x86\Release\WindowsFormsApp7.csproj.GenerateResource.cache
+C:\Users\User\source\repos\WindowsFormsApp7\WindowsFormsApp7\obj\x86\Release\WindowsFormsApp7.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\WindowsFormsApp7\WindowsFormsApp7\obj\x86\Release\WindowsFormsApp7.csproj.CopyComplete
+C:\Users\User\source\repos\WindowsFormsApp7\WindowsFormsApp7\obj\x86\Release\WindowsFormsApp7.exe
+C:\Users\User\source\repos\WindowsFormsApp7\WindowsFormsApp7\obj\x86\Release\WindowsFormsApp7.pdb
