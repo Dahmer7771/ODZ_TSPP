@@ -36,6 +36,7 @@ namespace WindowsFormsApp7
                 this.form1.comboBox2.Items.Clear();
 
                 this.form1.connection = new MySqlConnection(connectionString);
+                this.form1.connectionString = connectionString;
                 MySqlDataAdapter adapter = new MySqlDataAdapter("select id_plane `Номер рейса`, time_start `Время вылета`, time_end `Время прибытия`, free_count_econom `Билеты эконом класса`, free_count_business `Билеты бизнесс класса`, punkt_B `Место назначение` from Flying.Flights", this.form1.connection);
                 this.form1.readFromTable(adapter);
                 this.form1.connection.Open();

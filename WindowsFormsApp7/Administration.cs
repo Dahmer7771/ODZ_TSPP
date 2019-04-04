@@ -14,12 +14,20 @@ namespace WindowsFormsApp7
     public partial class Administration : Form
     {
         private Form1 refForm1;
-        private MySqlConnection connection = new MySqlConnection("datasource=localhost;port=3306;username=root;password=;");
+        private MySqlConnection connection;
 
-        public Administration(Form1 refForm1)
+        public Administration(Form1 refForm1, string connectionString)
         {
             InitializeComponent();
             this.refForm1 = refForm1;
+            try
+            {
+                connection = new MySqlConnection(connectionString);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void readFromTable(MySqlDataAdapter adapter)
@@ -35,22 +43,45 @@ namespace WindowsFormsApp7
 
         private void Administration_Load(object sender, EventArgs e)
         {
-            MySqlDataAdapter adapter = new MySqlDataAdapter("select id_plane `Номер рейса`, time_start `Время вылета`, time_end `Время прибытия`, free_count_econom `Билеты эконом класса`, free_count_business `Билеты бизнесс класса`, punkt_B `Место назначение` from Flying.Flights", connection);
-            readFromTable(adapter);
+            try
+            {
+                MySqlDataAdapter adapter = new MySqlDataAdapter("select id_plane `Номер рейса`, time_start `Время вылета`, time_end `Время прибытия`, free_count_econom `Билеты эконом класса`, free_count_business `Билеты бизнесс класса`, punkt_B `Место назначение` from Flying.Flights", connection);
+                readFromTable(adapter);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void Administration_FormClosed(object sender, FormClosedEventArgs e)
         {
             refForm1.Show();
+            try
+            {
+                MySqlDataAdapter adapter = new MySqlDataAdapter("select id_plane `Номер рейса`, time_start `Время вылета`, time_end `Время прибытия`, free_count_econom `Билеты эконом класса`, free_count_business `Билеты бизнесс класса`, punkt_B `Место назначение` from Flying.Flights", connection);
+                this.refForm1.readFromTable(adapter);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            MySqlDataAdapter adapter = new MySqlDataAdapter($"delete from Flying.Flights where id_plane = {dataGridView1.CurrentRow.Cells[0].Value} and time_start = '{dataGridView1.CurrentRow.Cells[1].Value}'", connection);
-            readFromTable(adapter);
+            try
+            {
+                MySqlDataAdapter adapter = new MySqlDataAdapter($"delete from Flying.Flights where id_plane = {dataGridView1.CurrentRow.Cells[0].Value} and time_start = '{dataGridView1.CurrentRow.Cells[1].Value}'", connection);
+                readFromTable(adapter);
 
-            MySqlDataAdapter adapter2 = new MySqlDataAdapter("select id_plane `Номер рейса`, time_start `Время вылета`, time_end `Время прибытия`, free_count_econom `Билеты эконом класса`, free_count_business `Билеты бизнесс класса`, punkt_B `Место назначение` from Flying.Flights", connection);
-            readFromTable(adapter2);
+                MySqlDataAdapter adapter2 = new MySqlDataAdapter("select id_plane `Номер рейса`, time_start `Время вылета`, time_end `Время прибытия`, free_count_econom `Билеты эконом класса`, free_count_business `Билеты бизнесс класса`, punkt_B `Место назначение` from Flying.Flights", connection);
+                readFromTable(adapter2);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)

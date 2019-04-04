@@ -163,9 +163,16 @@ namespace WindowsFormsApp7
 
         private void экспортToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Administration administration = new Administration(this);
-            administration.Show();
-            this.Hide();
+            try
+            {
+                Administration administration = new Administration(this, connectionString);
+                administration.Show();
+                this.Hide();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         public void Clear(DataGridView dataGridView)
