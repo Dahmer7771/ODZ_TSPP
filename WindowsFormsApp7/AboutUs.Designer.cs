@@ -156,6 +156,7 @@
             this.Name = "AboutUs";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "О нас";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AboutUs_FormClosed);
             this.Load += new System.EventHandler(this.AboutUs_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();

@@ -33,15 +33,14 @@ namespace WindowsFormsApp7
                 $"password={textBox4.Text};";
 
                 this.form1.comboBox2.Items.Clear();
-                this.form1.comboBox2.Items.Clear();
 
                 this.form1.connection = new MySqlConnection(connectionString);
                 this.form1.connectionString = connectionString;
-                MySqlDataAdapter adapter = new MySqlDataAdapter("select id_plane `Номер рейса`, time_start `Время вылета`, time_end `Время прибытия`, free_count_econom `Билеты эконом класса`, free_count_business `Билеты бизнесс класса`, punkt_B `Место назначение` from Flying.Flights", this.form1.connection);
+                MySqlDataAdapter adapter = new MySqlDataAdapter("select id_flight `Номер рейса`, id_plane `Номер самолета`, time_start `Время вылета`, time_end `Время прибытия`, flight_date `Дата вылета`, free_count_econom `Билеты эконом класса`, free_count_business `Билеты бизнесс класса`, punkt_B `Место назначение` from Flying.Flights", this.form1.connection);
                 this.form1.readFromTable(adapter);
                 this.form1.connection.Open();
 
-                MySqlCommand command = new MySqlCommand("select punkt_B from Flying.Flights", this.form1.connection);
+                MySqlCommand command = new MySqlCommand("select distinct punkt_B from Flying.Flights", this.form1.connection);
                 MySqlDataReader reader = command.ExecuteReader();
 
                 while (reader.Read())

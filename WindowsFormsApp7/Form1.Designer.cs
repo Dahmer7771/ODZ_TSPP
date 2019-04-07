@@ -48,6 +48,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -61,7 +62,7 @@
             this.подключениеToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(896, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1084, 24);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -88,13 +89,13 @@
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.CustomFormat = "HH-mm-ss";
+            this.dateTimePicker1.CustomFormat = "HH-mm";
             this.dateTimePicker1.Dock = System.Windows.Forms.DockStyle.Top;
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Time;
             this.dateTimePicker1.Location = new System.Drawing.Point(3, 93);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.ShowUpDown = true;
-            this.dateTimePicker1.Size = new System.Drawing.Size(262, 20);
+            this.dateTimePicker1.Size = new System.Drawing.Size(319, 20);
             this.dateTimePicker1.TabIndex = 6;
             // 
             // comboBox2
@@ -105,7 +106,7 @@
             this.comboBox2.Location = new System.Drawing.Point(3, 33);
             this.comboBox2.MaxDropDownItems = 15;
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(262, 21);
+            this.comboBox2.Size = new System.Drawing.Size(319, 21);
             this.comboBox2.TabIndex = 5;
             // 
             // label3
@@ -114,9 +115,9 @@
             this.label3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.label3.Location = new System.Drawing.Point(3, 77);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(262, 13);
+            this.label3.Size = new System.Drawing.Size(319, 13);
             this.label3.TabIndex = 3;
-            this.label3.Text = "Время вылета:";
+            this.label3.Text = "Время и дата вылета:";
             // 
             // label2
             // 
@@ -124,7 +125,7 @@
             this.label2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.label2.Location = new System.Drawing.Point(3, 17);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(262, 13);
+            this.label2.Size = new System.Drawing.Size(319, 13);
             this.label2.TabIndex = 2;
             this.label2.Text = "Пункт назначения:";
             // 
@@ -139,14 +140,15 @@
             this.tableLayoutPanel1.Controls.Add(this.comboBox2, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.dateTimePicker1, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.button1, 0, 13);
-            this.tableLayoutPanel1.Controls.Add(this.radioButton1, 0, 5);
             this.tableLayoutPanel1.Controls.Add(this.radioButton2, 0, 6);
             this.tableLayoutPanel1.Controls.Add(this.radioButton3, 0, 7);
-            this.tableLayoutPanel1.Controls.Add(this.label1, 0, 4);
-            this.tableLayoutPanel1.Controls.Add(this.button2, 0, 8);
-            this.tableLayoutPanel1.Controls.Add(this.label4, 0, 9);
-            this.tableLayoutPanel1.Controls.Add(this.label5, 0, 10);
-            this.tableLayoutPanel1.Controls.Add(this.label6, 0, 11);
+            this.tableLayoutPanel1.Controls.Add(this.label1, 0, 5);
+            this.tableLayoutPanel1.Controls.Add(this.button2, 0, 9);
+            this.tableLayoutPanel1.Controls.Add(this.label6, 0, 12);
+            this.tableLayoutPanel1.Controls.Add(this.label5, 0, 11);
+            this.tableLayoutPanel1.Controls.Add(this.label4, 0, 10);
+            this.tableLayoutPanel1.Controls.Add(this.radioButton1, 0, 8);
+            this.tableLayoutPanel1.Controls.Add(this.dateTimePicker2, 0, 4);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 24);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -159,13 +161,13 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 38F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 8F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(896, 437);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1084, 437);
             this.tableLayoutPanel1.TabIndex = 3;
             // 
             // dataGridView1
@@ -173,11 +175,11 @@
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(271, 3);
+            this.dataGridView1.Location = new System.Drawing.Point(328, 3);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.tableLayoutPanel1.SetRowSpan(this.dataGridView1, 14);
-            this.dataGridView1.Size = new System.Drawing.Size(622, 431);
+            this.dataGridView1.Size = new System.Drawing.Size(753, 431);
             this.dataGridView1.TabIndex = 0;
             // 
             // button1
@@ -186,7 +188,7 @@
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button1.Location = new System.Drawing.Point(3, 397);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(262, 37);
+            this.button1.Size = new System.Drawing.Size(319, 37);
             this.button1.TabIndex = 7;
             this.button1.Text = "Поиск";
             this.button1.UseVisualStyleBackColor = true;
@@ -196,7 +198,7 @@
             // 
             this.radioButton1.AutoSize = true;
             this.radioButton1.Checked = true;
-            this.radioButton1.Location = new System.Drawing.Point(3, 153);
+            this.radioButton1.Location = new System.Drawing.Point(3, 243);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(229, 17);
             this.radioButton1.TabIndex = 8;
@@ -230,18 +232,18 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.label1.Location = new System.Drawing.Point(3, 137);
+            this.label1.Location = new System.Drawing.Point(3, 167);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(262, 13);
+            this.label1.Size = new System.Drawing.Size(319, 13);
             this.label1.TabIndex = 11;
             this.label1.Text = "Настройка выборки:";
             // 
             // button2
             // 
             this.button2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button2.Location = new System.Drawing.Point(3, 243);
+            this.button2.Location = new System.Drawing.Point(3, 278);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(262, 30);
+            this.button2.Size = new System.Drawing.Size(319, 29);
             this.button2.TabIndex = 12;
             this.button2.Text = "Показать все рейсы";
             this.button2.UseVisualStyleBackColor = true;
@@ -251,7 +253,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(3, 290);
+            this.label4.Location = new System.Drawing.Point(3, 310);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(43, 15);
             this.label4.TabIndex = 13;
@@ -261,7 +263,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label5.Location = new System.Drawing.Point(3, 310);
+            this.label5.Location = new System.Drawing.Point(3, 330);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(31, 15);
             this.label5.TabIndex = 14;
@@ -271,22 +273,32 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label6.Location = new System.Drawing.Point(3, 330);
+            this.label6.Location = new System.Drawing.Point(3, 350);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(66, 15);
             this.label6.TabIndex = 15;
             this.label6.Text = "username:";
             // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.CustomFormat = "yyyy-MM-dd";
+            this.dateTimePicker2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker2.Location = new System.Drawing.Point(3, 123);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(319, 20);
+            this.dateTimePicker2.TabIndex = 16;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(896, 461);
+            this.ClientSize = new System.Drawing.Size(1084, 461);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
-            this.MinimumSize = new System.Drawing.Size(650, 400);
+            this.MinimumSize = new System.Drawing.Size(900, 400);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Расписание рейсов самолетов";
@@ -322,6 +334,7 @@
         private System.Windows.Forms.Label label6;
         public System.Windows.Forms.DataGridView dataGridView1;
         public System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.DateTimePicker dateTimePicker2;
     }
 }
 

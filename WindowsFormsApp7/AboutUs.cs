@@ -19,11 +19,18 @@ namespace WindowsFormsApp7
             InitializeComponent();
             this.form1 = form1;
             TopMost = true;
+            form1.Hide();
         }
 
         private void AboutUs_Load(object sender, EventArgs e)
         {
+        }
 
+        private void AboutUs_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Connection connection = new Connection(form1);
+            connection.Show();
+            form1.Hide();
         }
     }
 }
