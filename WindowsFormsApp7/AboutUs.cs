@@ -30,7 +30,6 @@ namespace WindowsFormsApp7
         {
             Connection connection = new Connection(form1);
             connection.Show();
-            form1.Hide();
         }
     }
 }

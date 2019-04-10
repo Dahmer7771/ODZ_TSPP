@@ -52,9 +52,10 @@ namespace WindowsFormsApp7
         {
             try
             {
-                MySqlDataAdapter adapter = new MySqlDataAdapter("select id_plane `Номер самолета`, time_start `Время вылета`, time_end `Время прибытия`, flight_date `Дата вылета`, free_count_econom `Билеты эконом класса`, free_count_business `Билеты бизнесс класса`, punkt_B `Место назначение` from Flying.Flights", connection);
+                MySqlDataAdapter adapter = new MySqlDataAdapter("select id_plane `Номер самолета`, time_start `Время вылета`, time_end `Время прибытия`, flight_date `Дата вылета`, arrival_date `Дата прибытия`, free_count_econom `Билеты эконом класса`, free_count_business `Билеты бизнесс класса`, punkt_B `Место назначение` from Flying.Flights", connection);
                 readFromTable(adapter);
                 dataGridView1.Columns[3].DefaultCellStyle.Format = "yyyy-MM-dd";
+                dataGridView1.Columns[4].DefaultCellStyle.Format = "yyyy-MM-dd";
             }
             catch(Exception ex)
             {
@@ -71,7 +72,7 @@ namespace WindowsFormsApp7
             refForm1.Show();
             try
             {
-                MySqlDataAdapter adapter = new MySqlDataAdapter("select id_flight `Номер рейса`, id_plane `Номер самолета`, time_start `Время вылета`, time_end `Время прибытия`, flight_date `Дата вылета`, free_count_econom `Билеты эконом класса`, free_count_business `Билеты бизнесс класса`, punkt_B `Место назначение` from Flying.Flights", connection);
+                MySqlDataAdapter adapter = new MySqlDataAdapter("select id_flight `Номер рейса`, id_plane `Номер самолета`, time_start `Время вылета`, time_end `Время прибытия`, flight_date `Дата вылета`, arrival_date `Дата прибытия`, free_count_econom `Билеты эконом класса`, free_count_business `Билеты бизнесс класса`, punkt_B `Место назначение` from Flying.Flights", connection);
                 this.refForm1.readFromTable(adapter);
 
                 this.refForm1.comboBox2.Items.Clear();
@@ -104,19 +105,22 @@ namespace WindowsFormsApp7
             {
                 string[] date_massive = Convert.ToString(dataGridView1.CurrentRow.Cells[3].Value).Split(' ')[0].Split('.');
                 string date_format = $"{date_massive[2]}-{date_massive[1]}-{date_massive[0]}";
+                string[] date_massive2 = Convert.ToString(dataGridView1.CurrentRow.Cells[4].Value).Split(' ')[0].Split('.');
+                string date_format2 = $"{date_massive2[2]}-{date_massive2[1]}-{date_massive2[0]}";
 
                 MessageBox.Show(date_format);
                 MySqlDataAdapter adapter = new MySqlDataAdapter($"delete from Flying.Flights where id_plane = {dataGridView1.CurrentRow.Cells[0].Value} " +
                     $"and time_start = '{dataGridView1.CurrentRow.Cells[1].Value}' " +
                     $"and time_end = '{dataGridView1.CurrentRow.Cells[2].Value}' " +
                     $"and flight_date = '{date_format}'" +
+                    $" and arrival_date = '{date_format2}'" +
                     $"and free_count_econom = {dataGridView1.CurrentRow.Cells[4].Value} " +
                     $"and free_count_business = {dataGridView1.CurrentRow.Cells[5].Value} " +
                     $"and punkt_B = '{dataGridView1.CurrentRow.Cells[6].Value}';", 
                     connection);
                 readFromTable(adapter);
 
-                MySqlDataAdapter adapter2 = new MySqlDataAdapter("select id_plane `Номер самолета`, time_start `Время вылета`, time_end `Время прибытия`, flight_date `Дата вылета`, free_count_econom `Билеты эконом класса`, free_count_business `Билеты бизнесс класса`, punkt_B `Место назначение` from Flying.Flights;", connection);
+                MySqlDataAdapter adapter2 = new MySqlDataAdapter("select id_plane `Номер самолета`, time_start `Время вылета`, time_end `Время прибытия`, flight_date `Дата вылета`, arrival_date `Дата прибытия`, free_count_econom `Билеты эконом класса`, free_count_business `Билеты бизнесс класса`, punkt_B `Место назначение` from Flying.Flights;", connection);
                 readFromTable(adapter2);
             }
             catch(Exception ex)
@@ -160,8 +164,10 @@ namespace WindowsFormsApp7
 
                     string[] date_massive = Convert.ToString(massiv[i, 3]).Split(' ')[0].Split('.');
                     string date_format = $"{date_massive[2]}-{date_massive[1]}-{date_massive[0]}";
+                    string[] date_massive2 = Convert.ToString(massiv[i, 4]).Split(' ')[0].Split('.');
+                    string date_format2 = $"{date_massive2[2]}-{date_massive2[1]}-{date_massive2[0]}";
 
-                    MySqlCommand command2 = new MySqlCommand($"update Flying.Flights set `id_plane` = {massiv[i, 0]}, `time_start` = '{massiv[i, 1]}', `time_end` = '{massiv[i, 2]}', `flight_date` = '{date_format}', `free_count_econom` = {massiv[i, 4]}, `free_count_business` = {massiv[i, 5]}, `punkt_B` = '{massiv[i, 6]}' where id_plane = {dataGridView1[0, i].Value.ToString()}", connection);
+                    MySqlCommand command2 = new MySqlCommand($"update Flying.Flights set `id_plane` = {massiv[i, 0]}, `time_start` = '{massiv[i, 1]}', `time_end` = '{massiv[i, 2]}', `flight_date` = '{date_format}', `arrival_date` = '{date_format2}', `free_count_econom` = {massiv[i, 4]}, `free_count_business` = {massiv[i, 5]}, `punkt_B` = '{massiv[i, 6]}' where id_plane = {dataGridView1[0, i].Value.ToString()}", connection);
                     connection.Open();
                     command2.ExecuteNonQuery();
                     connection.Close();
@@ -179,7 +185,7 @@ namespace WindowsFormsApp7
                             if(dialogResult == DialogResult.Cancel)
                             {
                                 this.Clear(dataGridView1);
-                                MySqlDataAdapter adapter = new MySqlDataAdapter("select id_plane `Номер самолета`, time_start `Время вылета`, time_end `Время прибытия`, flight_date `Дата вылета`, free_count_econom `Билеты эконом класса`, free_count_business `Билеты бизнесс класса`, punkt_B `Место назначение` from Flying.Flights", connection);
+                                MySqlDataAdapter adapter = new MySqlDataAdapter("select id_plane `Номер самолета`, time_start `Время вылета`, time_end `Время прибытия`, flight_date `Дата вылета`, arrival_date `Дата прибытия`, free_count_econom `Билеты эконом класса`, free_count_business `Билеты бизнесс класса`, punkt_B `Место назначение` from Flying.Flights", connection);
                                 readFromTable(adapter);
                                 normalRow = false;
                                 break;
@@ -196,17 +202,20 @@ namespace WindowsFormsApp7
                         var cellItem = dataGridView1.Rows[i];
                         string[] date_massive = Convert.ToString(cellItem.Cells[3].Value).Split(' ')[0].Split('.');
                         string date_format = $"{date_massive[2]}-{date_massive[1]}-{date_massive[0]}";
+                        string[] date_massive2 = Convert.ToString(cellItem.Cells[4].Value).Split(' ')[0].Split('.');
+                        string date_format2 = $"{date_massive2[2]}-{date_massive2[1]}-{date_massive2[0]}";
 
                         MySqlCommand command2 = new MySqlCommand($"INSERT INTO Flying.Flights" +
-                            $"(`id_plane`, `time_start`, `time_end`, `flight_date`, `free_count_econom`, `free_count_business`, `punkt_B`) " +
+                            $"(`id_plane`, `time_start`, `time_end`, `flight_date`, `arrival_date`, `free_count_econom`, `free_count_business`, `punkt_B`) " +
                             $"VALUES (" +
                             $"{cellItem.Cells[0].Value}, " +
                             $"'{cellItem.Cells[1].Value.ToString()}', " +
                             $"'{cellItem.Cells[2].Value.ToString()}', " +
                             $"'{date_format}', " +
-                            $"{cellItem.Cells[4].Value}, " +
+                            $"'{date_format2}'" +
                             $"{cellItem.Cells[5].Value}, " +
-                            $"'{cellItem.Cells[6].Value.ToString()}')", connection);
+                            $"{cellItem.Cells[6].Value}, " +
+                            $"'{cellItem.Cells[7].Value.ToString()}')", connection);
 
                         connection.Open();
                         command2.ExecuteNonQuery();
@@ -236,9 +245,10 @@ namespace WindowsFormsApp7
                 if (dialogResult == DialogResult.Cancel)
                 {
                     this.Clear(dataGridView1);
-                    MySqlDataAdapter adapter = new MySqlDataAdapter("select id_plane `Номер самолета`, time_start `Время вылета`, time_end `Время прибытия`, flight_date `Дата вылета`, free_count_econom `Билеты эконом класса`, free_count_business `Билеты бизнесс класса`, punkt_B `Место назначение` from Flying.Flights", connection);
+                    MySqlDataAdapter adapter = new MySqlDataAdapter("select id_plane `Номер самолета`, time_start `Время вылета`, time_end `Время прибытия`, flight_date `Дата вылета`, arrival_date `Дата прибытия`, free_count_econom `Билеты эконом класса`, free_count_business `Билеты бизнесс класса`, punkt_B `Место назначение` from Flying.Flights", connection);
                     readFromTable(adapter);
                     dataGridView1.Columns[3].DefaultCellStyle.Format = "yyyy-MM-dd";
+                    dataGridView1.Columns[4].DefaultCellStyle.Format = "yyyy-MM-dd";
                 }
             }
             catch(Exception ex)

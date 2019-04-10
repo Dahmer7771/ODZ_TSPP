@@ -94,7 +94,7 @@ namespace WindowsFormsApp7
             {
                 try
                 {
-                    MySqlDataAdapter adapter = new MySqlDataAdapter($"select id_flight `Номер рейса`, id_plane `Номер самолета`, time_start `Время вылета`, time_end `Время прибытия`, flight_date `Дата вылета`, free_count_econom `Билеты эконом класса`, free_count_business `Билеты бизнесс класса`, punkt_B `Место назначение` from Flying.Flights where punkt_B = '{punkt_B}' and time_start = '{time_start}' and flight_date = '{flight_date}'", connection);
+                    MySqlDataAdapter adapter = new MySqlDataAdapter($"select id_flight `Номер рейса`, id_plane `Номер самолета`, time_start `Время вылета`, time_end `Время прибытия`, flight_date `Дата вылета`, arrival_date `Дата прибытия`, free_count_econom `Билеты эконом класса`, free_count_business `Билеты бизнесс класса`, punkt_B `Место назначение` from Flying.Flights where punkt_B = '{punkt_B}' and time_start = '{time_start}' and flight_date = '{flight_date}'", connection);
                     readFromTable(adapter);
                 }
                 catch (Exception ex)
@@ -103,12 +103,12 @@ namespace WindowsFormsApp7
                 }
             } else if(radioButton2.Checked == true)
             {
-                MySqlDataAdapter adapter = new MySqlDataAdapter($"select id_flight `Номер рейса`, id_plane `Номер самолета`, time_start `Время вылета`, time_end `Время прибытия`, flight_date `Дата вылета`, free_count_econom `Билеты эконом класса`, free_count_business `Билеты бизнесс класса`, punkt_B `Место назначение` from Flying.Flights where punkt_B = '{punkt_B}'", connection);
+                MySqlDataAdapter adapter = new MySqlDataAdapter($"select id_flight `Номер рейса`, id_plane `Номер самолета`, time_start `Время вылета`, time_end `Время прибытия`, flight_date `Дата вылета`, arrival_date `Дата прибытия`, free_count_econom `Билеты эконом класса`, free_count_business `Билеты бизнесс класса`, punkt_B `Место назначение` from Flying.Flights where punkt_B = '{punkt_B}'", connection);
                 readFromTable(adapter);
             }
             else
             {
-                MySqlDataAdapter adapter = new MySqlDataAdapter($"select id_flight `Номер рейса`, id_plane `Номер рейса`, time_start `Время самолета`, time_end `Время прибытия`, flight_date `Дата вылета`, free_count_econom `Билеты эконом класса`, free_count_business `Билеты бизнесс класса`, punkt_B `Место назначение` from Flying.Flights where time_start = '{time_start}' and  flight_date = '{flight_date}'", connection);
+                MySqlDataAdapter adapter = new MySqlDataAdapter($"select id_flight `Номер рейса`, id_plane `Номер рейса`, time_start `Время самолета`, time_end `Время прибытия`, flight_date `Дата вылета`, arrival_date `Дата прибытия`, free_count_econom `Билеты эконом класса`, free_count_business `Билеты бизнесс класса`, punkt_B `Место назначение` from Flying.Flights where time_start = '{time_start}' and  flight_date = '{flight_date}'", connection);
                 readFromTable(adapter);
             }
         }
@@ -132,9 +132,10 @@ namespace WindowsFormsApp7
                         $"Время вылета: {cellItem[2].Value} \n" +
                         $"Время прибытия: {cellItem[3].Value} \n" +
                         $"Дата вылета: {cellItem[4].Value = Convert.ToString(cellItem[4].Value).Split(' ')[0]} \n" +
-                        $"Свободные места эконом класса: {cellItem[5].Value} \n" +
-                        $"Свободные места бизнес класса: {cellItem[6].Value} \n" +
-                        $"Рейс в: {cellItem[7].Value} \n" +
+                        $"Дата прибытия: {cellItem[5].Value = Convert.ToString(cellItem[5].Value).Split(' ')[0]} \n" +
+                        $"Свободные места эконом класса: {cellItem[6].Value} \n" +
+                        $"Свободные места бизнес класса: {cellItem[7].Value} \n" +
+                        $"Рейс в: {cellItem[8].Value} \n" +
                         $"{new string('*', 80)} \n";
 
                     paragraphone.Range.Text = documentContent;
@@ -178,7 +179,7 @@ namespace WindowsFormsApp7
         {
             try
             {
-                MySqlDataAdapter adapter = new MySqlDataAdapter("select id_flight `Номер рейса`, id_plane `Номер самолета`, time_start `Время вылета`, time_end `Время прибытия`, flight_date `Дата вылета`, free_count_econom `Билеты эконом класса`, free_count_business `Билеты бизнесс класса`, punkt_B `Место назначение` from Flying.Flights", connection);
+                MySqlDataAdapter adapter = new MySqlDataAdapter("select id_flight `Номер рейса`, id_plane `Номер самолета`, time_start `Время вылета`, time_end `Время прибытия`, flight_date `Дата вылета`, arrival_date `Дата прибытия`, free_count_econom `Билеты эконом класса`, free_count_business `Билеты бизнесс класса`, punkt_B `Место назначение` from Flying.Flights", connection);
                 readFromTable(adapter);
             }
             catch(Exception ex)
@@ -195,7 +196,6 @@ namespace WindowsFormsApp7
         {
             Connection connection = new Connection(this);
             connection.Show();
-            this.Hide();
         }
     }
 }
