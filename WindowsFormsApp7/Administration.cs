@@ -108,15 +108,14 @@ namespace WindowsFormsApp7
                 string[] date_massive2 = Convert.ToString(dataGridView1.CurrentRow.Cells[4].Value).Split(' ')[0].Split('.');
                 string date_format2 = $"{date_massive2[2]}-{date_massive2[1]}-{date_massive2[0]}";
 
-                MessageBox.Show(date_format);
                 MySqlDataAdapter adapter = new MySqlDataAdapter($"delete from Flying.Flights where id_plane = {dataGridView1.CurrentRow.Cells[0].Value} " +
                     $"and time_start = '{dataGridView1.CurrentRow.Cells[1].Value}' " +
                     $"and time_end = '{dataGridView1.CurrentRow.Cells[2].Value}' " +
-                    $"and flight_date = '{date_format}'" +
-                    $" and arrival_date = '{date_format2}'" +
-                    $"and free_count_econom = {dataGridView1.CurrentRow.Cells[4].Value} " +
-                    $"and free_count_business = {dataGridView1.CurrentRow.Cells[5].Value} " +
-                    $"and punkt_B = '{dataGridView1.CurrentRow.Cells[6].Value}';", 
+                    $"and flight_date = '{date_format}' " +
+                    $"and arrival_date = '{date_format2}' " +
+                    $"and free_count_econom = {dataGridView1.CurrentRow.Cells[5].Value} " +
+                    $"and free_count_business = {dataGridView1.CurrentRow.Cells[6].Value} " +
+                    $"and punkt_B = '{dataGridView1.CurrentRow.Cells[7].Value}';", 
                     connection);
                 readFromTable(adapter);
 
@@ -167,7 +166,7 @@ namespace WindowsFormsApp7
                     string[] date_massive2 = Convert.ToString(massiv[i, 4]).Split(' ')[0].Split('.');
                     string date_format2 = $"{date_massive2[2]}-{date_massive2[1]}-{date_massive2[0]}";
 
-                    MySqlCommand command2 = new MySqlCommand($"update Flying.Flights set `id_plane` = {massiv[i, 0]}, `time_start` = '{massiv[i, 1]}', `time_end` = '{massiv[i, 2]}', `flight_date` = '{date_format}', `arrival_date` = '{date_format2}', `free_count_econom` = {massiv[i, 4]}, `free_count_business` = {massiv[i, 5]}, `punkt_B` = '{massiv[i, 6]}' where id_plane = {dataGridView1[0, i].Value.ToString()}", connection);
+                    MySqlCommand command2 = new MySqlCommand($"update Flying.Flights set `id_plane` = {massiv[i, 0]}, `time_start` = '{massiv[i, 1]}', `time_end` = '{massiv[i, 2]}', `flight_date` = '{date_format}', `arrival_date` = '{date_format2}', `free_count_econom` = {massiv[i, 5]}, `free_count_business` = {massiv[i, 6]}, `punkt_B` = '{massiv[i, 7]}' where id_plane = {dataGridView1[0, i].Value.ToString()}", connection);
                     connection.Open();
                     command2.ExecuteNonQuery();
                     connection.Close();
@@ -212,7 +211,7 @@ namespace WindowsFormsApp7
                             $"'{cellItem.Cells[1].Value.ToString()}', " +
                             $"'{cellItem.Cells[2].Value.ToString()}', " +
                             $"'{date_format}', " +
-                            $"'{date_format2}'" +
+                            $"'{date_format2}', " +
                             $"{cellItem.Cells[5].Value}, " +
                             $"{cellItem.Cells[6].Value}, " +
                             $"'{cellItem.Cells[7].Value.ToString()}')", connection);
